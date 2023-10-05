@@ -4,7 +4,8 @@
  * @return {number[]}
  */
 var map = function(arr, fn) {
-    const map1 = arr.map(fn);
-    return map1
-    
+    arr.forEach((ele,ind)=>{
+        arr[ind]=fn(ele,ind)
+    })
+    return arr
 };
