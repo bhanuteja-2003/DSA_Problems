@@ -5,7 +5,9 @@ public:
     int rob(vector<int>& nums) {
         vector<int> dp(nums.size() ,-1);
         int n = nums.size()-1;
-        dp[n] = nums[n];
+        
+        int last = nums[n];
+        int sec_last = nums[n];
         for(int i=n-1;i>=0;i--){
             int pick,no_pick;
             if(i+2>n){
@@ -13,14 +15,16 @@ public:
                 
             }
             else{
-                pick = nums[i]+dp[i+2];
+                pick = nums[i]+last;
                 
             }
-            no_pick = dp[i+1];
-            dp[i]=max(pick , no_pick);
+            no_pick = sec_last;
+            last=sec_last;
+            sec_last = max(pick , no_pick);
+            
         }
         
-        return dp[0];
+        return sec_last;
         
     }
 };
